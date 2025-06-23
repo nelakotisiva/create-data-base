@@ -72,3 +72,21 @@ VALUES
   (4, 4, 12357, '2025-06-07', '2025-06-22'),
   (5, 5, 12358, '2025-06-09', NULL);  -- NULL = not returned yet
 SELECT * FROM Borrowings;
+
+ER DIAGRAM:
+
+Members          Books
+---------        ----------
+member_id  <──┐  book_id   <──┐
+name           │  title        │
+email          │  author       │
+phone          │  category     │
+               │               │
+               ▼               ▼
+            Borrowings (join table)
+            -------------------------
+            borrow_id (PK)
+            member_id (FK to Members)
+            book_id (FK to Books)
+            borrow_date
+            return_date
